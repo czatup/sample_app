@@ -10,11 +10,22 @@
 #  password_digest :string(255)
 #
 
+
+# A model represents the information (data) of the application and the rules
+# to manipulate that data. In the case of Rails, models are primarily used
+# for managing the rules of interaction with a corresponding database table.
+# In most cases, each table in your database will correspond to one model
+# in your application. The bulk of your application’s business logic will be
+# concentrated in the models.
+
+
 class User < ActiveRecord::Base
     attr_accessible :name, :email, :password, :password_confirmation
     has_secure_password
 
     before_save { |user| user.email = email.downcase }
+    #powinno byc protected before save
+    #before_save { self.email.downcase! }
 
     validates :name, presence: true, length: { maximum: 50 }
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

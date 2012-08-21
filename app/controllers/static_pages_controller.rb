@@ -1,3 +1,9 @@
+# Controllers provide the “glue” between models and views.
+# In Rails, controllers are responsible for processing the
+# incoming requests from the web browser, interrogating
+# the models for data, and passing that data on to the
+# views for presentation.
+
 class StaticPagesController < ApplicationController
   def home
   end
@@ -5,7 +11,7 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-  def about  	
+  def about
   end
 
   def contact

@@ -28,4 +28,4 @@ production:
   database: sample_app_production
   pool: 5
   username: atom
-  password: 11exchange
+  #password:
