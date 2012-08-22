@@ -36,17 +36,8 @@ textarea {
     }
 }
 
-/* miscellaneous */
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
-
 /* typography */
+
 h1, h2, h3, h4, h5, h6 {
     line-height: 1;
 }
@@ -72,7 +63,6 @@ p {
     line-height: 1.7em;
 }
 
-
 /* header */
 
 #logo {
@@ -90,7 +80,6 @@ p {
         text-decoration: none;
     }
 }
-
 
 /* footer */
 
@@ -118,6 +107,15 @@ footer {
     }
 }
 
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
 
 /* sidebar */
 
