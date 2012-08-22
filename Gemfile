@@ -5,6 +5,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'bootstrap-sass', '2.0.4'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'pg', '0.14.0'
+#gem 'rails-i18n'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
