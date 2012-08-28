@@ -20,5 +20,4 @@ class SessionsController < ApplicationController
         flash[:notice] = "See you next time!"
         redirect_to root_url
     end
-
 end
