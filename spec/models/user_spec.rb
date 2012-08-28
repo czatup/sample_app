@@ -8,6 +8,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
+#  remember_token  :string(255)
 #
 
 require 'spec_helper'
@@ -26,6 +27,7 @@ describe User do
     it { should respond_to(:password_digest)}
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
+    it { should respond_to(:remember_token) }
     it { should respond_to(:authenticate) }
 
     it { should be_valid }
@@ -104,6 +106,16 @@ describe User do
     describe "with a password that's too short" do
         before { @user.password = @user.password_confirmation = "a" * 5 }
         it { should be_invalid }
+    end
+
+    describe "remember_token" do
+        before { @user.save }
+
+        its(:remember_token) { should_not be_blank }
+        #== it { @user.remember_token.should_not be_blank }
+        #its method, which is like it but applies
+        #the subsequent test to the given attribute
+        #rather than the subject of the test
     end
 
     describe "return the value of authenticate method" do

@@ -1,6 +1,5 @@
 @import "bootstrap";
 
-
 /* mixins, variables */
 
 $grayMediumLight: #eaeaea;
@@ -154,7 +153,7 @@ input, textarea, select, .uneditable-input {
   padding: 10px;
   height: auto;
   margin-bottom: 15px;
-  @include box_sizing;
+  //@include box_sizing;
 }
 
 #error_explanation {
