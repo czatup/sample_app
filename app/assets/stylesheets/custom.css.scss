@@ -1,6 +1,6 @@
 @import "bootstrap";
 
-/* mixins, variables */
+/* ---------- mixins, variables ---------- */
 
 $grayMediumLight: #eaeaea;
 
@@ -10,7 +10,7 @@ $grayMediumLight: #eaeaea;
   box-sizing: border-box;
 }
 
-/* universal */
+/* ---------- universal ---------- */
 
 html {
     overflow-y: scroll;
@@ -35,7 +35,7 @@ textarea {
     }
 }
 
-/* typography */
+/* ---------- typography ---------- */
 
 h1, h2, h3, h4, h5, h6 {
     line-height: 1;
@@ -62,7 +62,7 @@ p {
     line-height: 1.7em;
 }
 
-/* header */
+/* ---------- header ---------- */
 
 #logo {
     float: left;
@@ -80,7 +80,7 @@ p {
     }
 }
 
-/* footer */
+/* ---------- footer ---------- */
 
 footer {
     margin-top: 45px;
@@ -106,7 +106,7 @@ footer {
     }
 }
 
-/* miscellaneous */
+/* ---------- miscellaneous ---------- */
 
 .debug_dump {
   clear: both;
@@ -116,7 +116,7 @@ footer {
   @include box_sizing;
 }
 
-/* sidebar */
+/* ---------- sidebar ---------- */
 
 aside {
   section {
@@ -145,7 +145,7 @@ aside {
   margin-right: 10px;
 }
 
-/* forms */
+/* ---------- forms ---------- */
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
@@ -168,3 +168,19 @@ input, textarea, select, .uneditable-input {
   @extend .control-group;
   @extend .error;
  }
+
+
+ /* ---------- users index ---------- */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child{
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
