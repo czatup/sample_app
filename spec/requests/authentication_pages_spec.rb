@@ -70,6 +70,14 @@ describe "Authentication" do
                     it "should render the desired protected page" do
                         page.should have_selector('title', text: 'Edit user')
                     end
+
+                    describe "when signing in again" do
+                        before { sign_in user }
+
+                        it "should render the default (profile) page" do
+                            page.should have_selector('title', text: user.name)
+                        end
+                    end
                 end
             end
 
@@ -79,12 +87,12 @@ describe "Authentication" do
                     before { visit edit_user_path(user) }
 
                     it { should have_selector('title', text: 'Sign in') }
+                    it { should have_selector('div.alert.alert-notice')}
                 end
 
                 describe "submitting to the update action" do
                     before { put user_path(user) }
-
-                    specify { response.should redirect_to(signin_path) }
+                    specify { response.should redirect_to(signin_url) }
                 end
 
                 describe "visiting the user index" do
@@ -108,7 +116,7 @@ describe "Authentication" do
 
             describe "submitting a PUT request to the User#update action" do
                 before { put user_path(wrong_user) }
-                specify { response.should redirect_to(root_path) }
+                specify { response.should redirect_to(root_url) }
             end
         end
 
@@ -120,8 +128,23 @@ describe "Authentication" do
 
             describe "submitting a DELETE request to the Users#destroy action" do
                 before { delete user_path(user) }
-                specify { response.should redirect_to(root_path) }
+                specify { response.should redirect_to(root_url) }
             end
+        end
+    end
+
+    describe "signed-in users should not perform this action" do
+        let(:user) { FactoryGirl.create(:user) }
+        before { sign_in user }
+
+        describe "accessing the new page" do
+            before { get signup_path }
+            specify { response.should redirect_to(root_url) }
+        end
+
+        describe "accessing the create action" do
+            before { post users_path(user) }
+            specify { response.should redirect_to(root_url) }
         end
     end
 end

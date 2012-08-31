@@ -8,6 +8,9 @@ describe "User pages" do
 
     let(:user) { FactoryGirl.create(:user) }
 
+    before(:all) { 30.times { FactoryGirl.create(:user) } }
+    after(:all) { User.delete_all }
+
     before(:each) do
       sign_in user
       visit users_path
@@ -17,8 +20,6 @@ describe "User pages" do
     it { should have_selector('h1',     text: 'All users') }
 
     describe "pagination" do
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
-      after(:all) { User.delete_all }
 
       it { should have_selector('div.pagination') }
 
@@ -80,6 +81,12 @@ describe "User pages" do
         it { should have_selector('title', text: 'Sign up') }
         it { should have_content('error') }
         it { should_not have_content('Password digest')}
+        it { should have_content("Name can't be blank") }
+        it { should have_content("Email can't be blank") }
+        it { should have_content("Email is invalid") }
+        it { should have_content("Password can't be blank") }
+        it { should have_content("Password is too short (minimum is 6 characters)") }
+        it { should have_content("Password confirmation can't be blank") }
       end
     end
 
